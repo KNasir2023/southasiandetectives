@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goyenda Nexus - South Asian Intelligence Matrix</title>
+    
+    <!-- Tailwind CSS v4 Engine -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <!-- Leaflet.js Mapping Framework Engine -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <style>
+        /* Custom UI Thumb slider override variables */
+        input[type="range"]::-webkit-slider-thumb {
+            background: #ef4444;
+            border: 2px solid #ffffff;
+            border-radius: 9999px;
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+            -webkit-appearance: none;
+            box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #0a0a0a; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #262626; border-radius: 3px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #404040; }
+    </style>
+</head>
+<body class="bg-neutral-950 text-neutral-100 font-sans min-h-screen flex flex-col">
+
+    <!-- Top Navigation Branding Header Bar -->
+    <header class="w-full bg-neutral-900 border-b border-neutral-800 px-6 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 z-10 shadow-md">
+        <div>
+            <div class="flex items-center gap-2">
+                <span class="inline-block px-2 py-0.5 text-[9px] font-mono font-bold bg-red-950 text-red-400 border border-red-900 rounded uppercase tracking-wider">
+                    Cross-Border Espionage Archive
+                </span>
+            </div>
+            <h1 class="text-xl font-black font-mono tracking-tight text-neutral-50 mt-1">SUBCONTINENT INTEL MATRIX</h1>
+        </div>
+        <div class="flex items-center gap-4">
+            <a href="../index.html" class="text-xs text-neutral-400 hover:text-neutral-200 transition font-mono flex items-center gap-1">
+                ← Central Hub Portal
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Workspace Dashboard Content Area Split Layout -->
+    <main class="flex-1 flex flex-col lg:flex-row h-[calc(100vh-73px)] overflow-hidden">
+        
+        <!-- Left Column Dashboard Panel Component: Timeline Control and Dynamic Analysis Module -->
+        <section class="w-full lg:w-[440px] bg-neutral-900 flex flex-col border-b lg:border-b-0 lg:border-r border-neutral-800 h-1/2 lg:h-full justify-between">
+            
+            <!-- Dynamic Real-time Output Container -->
+            <div id="intel-target-viewport" class="p-5 overflow-y-auto flex-1 custom-scrollbar space-y-4">
+                <!-- Javascript will runtime mount dynamic analytical target layout views directly here -->
+            </div>
+
+            <!-- Fixed Operational Time-Variant Navigation Slider Component -->
+            <div class="p-5 border-t border-neutral-800 bg-neutral-950/60 space-y-4 shadow-inner">
+                <div class="flex justify-between items-center">
+                    <span class="text-xs font-mono text-neutral-400 uppercase tracking-wider font-bold">Chronological Timeline Axis</span>
+                    <span id="timeline-year-label" class="text-xs font-mono font-black text-red-400 bg-neutral-900 px-2 py-1 border border-neutral-800 rounded shadow-md">1932</span>
+                </div>
+                
+                <!-- Main Slider Node Component -->
+                <input id="timeline-range-slider" type="range" min="0" max="4" value="0" step="1" 
+                       class="w-full h-1.5 bg-neutral-800 rounded-lg appearance-none cursor-pointer accent-red-500 transition">
+                
+                <!-- Timeline Ticks Scale Text Output Node Array -->
+                <div class="flex justify-between text-[9px] font-mono text-neutral-500 font-bold px-0.5">
+                    <span>Byomkesh</span>
+                    <span>Imran</span>
+                    <span>Feluda</span>
+                    <span>Rana</span>
+                    <span>Tin Goyenda</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Right Column Dashboard Panel Component: Split Interface Canvas View for Maps and Structural Data Matrices -->
+        <section class="flex-1 flex flex-col h-1/2 lg:h-full bg-neutral-950 overflow-y-auto custom-scrollbar">
+            
+            <!-- Map Visualization Frame Workspace Section Layout -->
+            <div class="h-72 sm:h-96 min-h-[280px] w-full border-b border-neutral-800 relative bg-neutral-900 shadow-md">
+                <div id="leaflet-map-canvas" class="w-full h-full z-0"></div>
+            </div>
+
+            <!-- Tabular Comparative Intelligence Archive Data Sheets Section -->
+            <div class="p-6 space-y-12 max-w-5xl mx-auto w-full">
+                
+                <!-- Table 1 Block Group Element -->
+                <div class="space-y-3">
+                    <div class="flex items-center gap-2">
+                        <div class="w-1.5 h-4 bg-red-600 rounded-sm"></div>
+                        <h2 class="text-sm uppercase font-mono tracking-wider font-black text-neutral-200">Table 1: Tactical Operator Profiles & Archetypes</h2>
+                    </div>
+                    <div class="overflow-x-auto border border-neutral-800 rounded-xl bg-neutral-900/40 shadow-xl">
+                        <table class="w-full text-left border-collapse text-xs">
+                            <thead>
+                                <tr class="bg-neutral-900 border-b border-neutral-800 font-mono text-neutral-400 uppercase text-[10px] tracking-wider">
+                                    <th class="p-3.5 font-bold">Character / Agent Name</th>
+                                    <th class="p-3.5 font-bold">Universe Framework</th>
+                                    <th class="p-3.5 font-bold">Operational Base</th>
+                                    <th class="p-3.5 font-bold">Primary Archetype Profile</th>
+                                    <th class="p-3.5 font-bold">Signature Tradecraft Asset</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-neutral-800/60 text-neutral-300">
+                                <tr class="hover:bg-neutral-900/60 transition"><td class="p-3.5 font-bold text-neutral-200">Byomkesh Bakshi</td><td class="p-3.5 font-mono text-neutral-400">Byomkesh Bakshi</td><td class="p-3.5">Kolkata, WB</td><td class="p-3.5">The Satyanweshi (Truth-Seeker)</td><td class="p-3.5 font-mono text-red-400/90">Pure Logic / Chemistry Kit</td></tr>
+                                <tr class="hover:bg-neutral-900/60 transition bg-neutral-900/20"><td class="p-3.5 font-bold text-indigo-400">Ali Imran</td><td class="p-3.5 font-mono text-neutral-400">Imran Series</td><td class="p-3.5">Karachi / Allahabad</td><td class="p-3.5">Eccentric Playboy Cover / Secret Head</td><td class="p-3.5 font-mono text-indigo-400/90">Psychological Mask / Sing Art</td></tr>
+                                <tr class="hover:bg-neutral-900/60 transition"><td class="p-3.5 font-bold text-neutral-200">Prodosh C. Mitter (Feluda)</td><td class="p-3.5 font-mono text-neutral-400">Feluda Stories</td><td class="p-3.5">Ballygunge, Kolkata</td><td class="p-3.5">Analytical Polymath Scholar</td><td class="p-3.5 font-mono text-red-400/90">Mogojastro / .32 Colt Revolver</td></tr>
+                                <tr class="hover:bg-neutral-900/60 transition bg-neutral-900/20"><td class="p-3.5 font-bold text-neutral-200">Masud Rana</td><td class="p-3.5 font-mono text-neutral-400">Masud Rana Spycraft</td><td class="p-3.5">Segunbagicha, Dhaka</td><td class="p-3.5">Elite Counter-Intelligence Spy</td><td class="p-3.5 font-mono text-red-400/90">Walther PPK / Tactical Combats</td></tr>
+                                <tr class="hover:bg-neutral-900/60 transition"><td class="p-3.5 font-bold text-neutral-200">Kishore Pasha</td><td class="p-3.5 font-mono text-neutral-400">Tin Goyenda Saga</td><td class="p-3.5">Rocky Beach, California</td><td class="p-3.5">Systemic OSINT Operator</td><td class="p-3.5 font-mono text-red-400/90">Photographic Memory / Data Index</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Table 2 Block Group Element -->
+                <div class="space-y-3 pb-12">
+                    <div class="flex items-center gap-2">
+                        <div class="w-1.5 h-4 bg-indigo-600 rounded-sm"></div>
+                        <h2 class="text-sm uppercase font-mono tracking-wider font-black text-neutral-200">Table 2: Tactical Intelligence & Field Methodology</h2>
+                    </div>
+                    <div class="overflow-x-auto border border-neutral-800 rounded-xl bg-neutral-900/40 shadow-xl">
+                        <table class="w-full text-left border-collapse text-xs">
+                            <thead>
+                                <tr class="bg-neutral-900 border-b border-neutral-800 font-mono text-neutral-400 uppercase text-[10px] tracking-wider">
+                                    <th class="p-3.5 font-bold">Series Target</th>
+                                    <th class="p-3.5 font-bold">Investigation Type Scope</th>
+                                    <th class="p-3.5 font-bold">Core Intelligence Techniques Deployed</th>
+                                    <th class="p-3.5 font-bold">Geographical Operational Reach</th>
+                                    <th class="p-3.5 font-bold">Primary Helping Networks / Assets</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-neutral-800/60 text-neutral-300">
+                                <tr class="hover:bg-neutral-900/60 transition"><td class="p-3.5 font-bold text-neutral-200">Byomkesh Bakshi</td><td class="p-3.5">Homicide, Corporate Fraud, Counterfeiting</td><td class="p-3.5">Psychological profiling, forensic analysis, handwriting verification, active undercover disguises.</td><td class="p-3.5">Undivided Bengal, Kolkata, Patna, Monghyr</td><td class="p-3.5 font-mono text-neutral-400">Ajit Bandyopadhyay, Satyabati, Sharat Kumar</td></tr>
+                                <tr class="hover:bg-neutral-900/60 transition bg-neutral-900/20"><td class="p-3.5 font-bold text-indigo-400">Imran Series</td><td class="p-3.5">International Syndicates, Sabotage, Cyber Wars</td><td class="p-3.5">Surreal comedic masking, deep psychological pressure play, advanced counter-espionage, hand martial combat.</td><td class="p-3.5">Karachi, London, Middle East, "Zero Land"</td><td class="p-3.5 font-mono text-indigo-400">Secret Service Team (Safdar, Juana), Sir Sultan</td></tr>
+                                <tr class="hover:bg-neutral-900/60 transition"><td class="p-3.5 font-bold text-neutral-200">Feluda Stories</td><td class="p-3.5">Art Thefts, Smuggling Rings, Historic Missing Assets</td><td class="p-3.5">Raw deductive reasoning (Mogojastro), alibi load stress-testing, intense library historical background research.</td><td class="p-3.5">Pan-India (Varanasi, Jaisalmer), Nepal, London</td><td class="p-3.5 font-mono text-neutral-400">Tapesh (Topshe), Lalmohan Ganguly (Jatayu)</td></tr>
+                                <tr class="hover:bg-neutral-900/60 transition bg-neutral-900/20"><td class="p-3.5 font-bold text-neutral-200">Masud Rana</td><td class="p-3.5">Global Counter-Terrorism, Strategic Resource Extraction</td><td class="p-3.5">Signal intercept tracking (SIGINT), tactical wiretapping, defensive weapons operations, deep infiltration tradecraft.</td><td class="p-3.5">Global (Southeast Asia, Europe, Americas, Arctic)</td><td class="p-3.5 font-mono text-neutral-400">Rahat Khan (BCI Chief), Sohail, Salma, Kabir</td></tr>
+                                <tr class="hover:bg-neutral-900/60 transition"><td class="p-3.5 font-bold text-neutral-200">Tin Goyenda</td><td class="p-3.5">Kidnappings, Local Extortions, Historical Relic Tracking</td><td class="p-3.5">Open-Source Intelligence logs (OSINT), public database mining, systematic stakeouts, multi-source wire triangulation.</td><td class="p-3.5">Rocky Beach (California), Bangladesh rural zones</td><td class="p-3.5 font-mono text-neutral-400">Musa Aman, Robin Milford, Inspector King</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Runtime Application Scripts Management Matrix logic -->
+    <script>
+        // 1. Structural Dataset Map Array carrying the all-inclusive 5 franchises variables payload data
+        const intelligenceDataMatrix = [
+            {
+                id: 0,
+                series: "Byomkesh Bakshi",
+                creator: "Sharadindu Bandyopadhyay",
+                year: 1932,
+                baseLocation: "Harrison Road, Kolkata",
+                coordinates: [22.5785, 88.3610],
+                themeColor: "#ef4444",
+                strategyTitle: "Pure Deductive Logic & Forensics",
+                description: "Operating under the self-directed profile of 'Satyanweshi' (Seeker of Truth). Focuses heavily on unraveling human psychological motives, handwriting verification metrics, and localized physical evidence cross-examination inside colonial Bengal.",
+                tactics: ["Human behavioral profiling", "Forensic chemical tracing", "Undercover asset deployment"]
+            },
+            {
+                id: 1,
+                series: "Imran Series",
+                creator: "Ibn-e-Safi",
+                year: 1955,
+                baseLocation: "Karachi Base Operations (Historically Allahabad)",
+                coordinates: [24.8607, 67.0011],
+                themeColor: "#6366f1",
+                strategyTitle: "Psychological Deception & Counter-Intel",
+                description: "Deploying a calculated persona of an eccentric, foolish playboy to completely disarm foreign intelligence apparatuses. Behind the mask, acts as the absolute director of the Secret Service, utilizing unmatched psychological warfare and localized martial arts.",
+                tactics: ["Strategic identity masking", "Counter-surveillance misdirection", "Sing Art close combat methods"]
+            },
+            {
+                id: 2,
+                series: "Feluda (Prodosh Chandra Mitter)",
+                creator: "Satyajit Ray",
+                year: 1965,
+                baseLocation: "Rajani Sen Road, Ballygunge, Kolkata",
+                coordinates: [22.5135, 88.3582],
+                themeColor: "#f59e0b",
+                strategyTitle: "Mogojastro (Mental Weaponry) Analysis",
+                description: "Emphasizes rapid situational calculation, comprehensive general knowledge recall, and meticulous timeline mapping. Feluda rejects modern physical labs, favoring raw observation and cross-referencing archives to find structural inconsistencies in testimonies.",
+                tactics: ["Mogojastro baseline analysis", "Alibi consistency stress-testing", "Historical record cross-matching"]
+            },
+            {
+                id: 3,
+                series: "Masud Rana",
+                creator: "Kazi Anwar Hussain",
+                year: 1966,
+                baseLocation: "BCI Headquarters, Segunbagicha, Dhaka",
+                coordinates: [23.7335, 90.4076],
+                themeColor: "#10b981",
+                strategyTitle: "Global State Espionage & Signal Intel",
+                description: "Operating as an elite active operative for the Bangladesh Counter Intelligence (BCI). Fully executing high-intensity cold-war style foreign tradecraft including signal monitoring, infiltration behind defensive perimeters, and specialized electronic intercept gathering.",
+                tactics: ["Signal intercept parsing (SIGINT)", "Tactical deep-cover insertion", "Paramilitary defense protocols"]
+            },
+            {
+                id: 4,
+                series: "Tin Goyenda (Kishore, Musa, Robin)",
+                creator: "Rakib Hasan",
+                year: 1985,
+                baseLocation: "Rocky Beach (CA) Hub / Mapped to Dhaka Center",
+                coordinates: [23.7925, 90.4078],
+                themeColor: "#06b6d4",
+                strategyTitle: "Open-Source Intelligence & Systematic Logs",
+                description: "A three-man structured private investigative unit running an intelligence processing node. Utilizes open-source public documentation records, news microfiche archives, systemic community monitoring networks, and structured log bookkeeping.",
+                tactics: ["Open-Source data tracking (OSINT)", "Archival directory processing", "Triangulated team stakeouts"]
+            }
+        ];
+
+        // 2. Instantiate Leaflet GIS Map Canvas viewport engine view
+        const map = L.map('leaflet-map-canvas', {
+            center: [23.0000, 79.0000],
+            zoom: 5,
+            zoomControl: false
+        });
+        L.control.zoom({ position: 'topright' }).addTo(map);
+
+        // Load tactical sleek dark custom map skin theme
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; OpenStreetMap &copy; CARTO'
+        }).addTo(map);
+
+        // 3. Document Object Model Node Targets Cache
+        const slider = document.getElementById('timeline-range-slider');
+        const yearLabel = document.getElementById('timeline-year-label');
+        const viewport = document.getElementById('intel-target-viewport');
+        
+        // Persistent variable storage array for controlling the active map vector layer updates
+        let activeMarkerGroupLayer = L.layerGroup().addTo(map);
+
+        // 4. Processing Core Engine Update Function
+        function shiftUniverseContextState(index) {
+            const node = intelligenceDataMatrix[index];
+            
+            // Clean out old radar nodes from the map group container layer
+            activeMarkerGroupLayer.clearLayers();
+
+            // Transform raw slider string values instantly
+            yearLabel.innerText = node.year;
+
+            // Generate HTML markup structures dynamically from looping sub-arrays 
+            let tacticsHTML = '';
+            node.tactics.forEach(tactic => {
+                tacticsHTML += `
+                    <li class="flex items-center gap-2 text-xs text-neutral-300 font-mono">
+                        <span class="w-1.5 h-1.5 rounded-full" style="background-color: ${node.themeColor}"></span>
+                        ${tactic}
+                    </li>`;
+            });
+
+            // Re-render the side container control content panels view layouts
+            viewport.innerHTML = `
+                <div>
+                    <h2 class="text-xl font-black text-neutral-100 tracking-tight flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full" style="background-color: ${node.themeColor}"></span>
+                        ${node.series}
+                    </h2>
+                    <p class="text-xs text-neutral-500 font-mono mt-0.5">Universe Initial Genesis Architecture: ${node.creator}</p>
+                </div>
+
+                <div class="p-3 bg-neutral-950/80 border border-neutral-800 rounded-xl shadow-inner">
+                    <span class="text-[9px] font-mono text-neutral-500 uppercase tracking-widest block font-bold">Primary Spatial Base Station:</span>
+                    <span class="text-xs font-semibold text-neutral-300 font-mono">${node.baseLocation}</span>
+                </div>
+
+                <div class="space-y-1">
+                    <h3 class="text-sm font-bold font-mono" style="color: ${node.themeColor}">${node.strategyTitle}</h3>
+                    <p class="text-xs text-neutral-400 leading-relaxed">${node.description}</p>
+                </div>
+
+                <div class="space-y-2 pt-2">
+                    <h4 class="text-[10px] uppercase font-mono tracking-wider font-black text-neutral-500">Core Operational Tradecraft:</h4>
+                    <ul class="space-y-1.5">${tacticsHTML}</ul>
+                </div>
+            `;
+
+            // 5. Draw dynamic color-coded high-visibility radar tracker ring onto map canvas
+            const operationalMarkerNode = L.circleMarker(node.coordinates, {
+                radius: 14,
+                fillColor: node.themeColor,
+                color: '#ffffff',
+                weight: 2,
+                fillOpacity: 0.4
+            }).addTo(activeMarkerGroupLayer);
+
+            // Append floating context tooltips descriptors onto the marker vectors
+            operationalMarkerNode.bindTooltip(`
+                <div class="bg-neutral-950 text-neutral-100 p-2 border border-neutral-800 rounded text-xs font-mono">
+                    <b style="color: ${node.themeColor}">${node.series} Base Focus</b><br>
+                    Epoch Origin Threshold: ${node.year}
+                </div>`, {
+                direction: 'top',
+                opacity: 0.9
+            });
+
+            // Smoothly coordinate focus transformation pan transitions
+            map.flyTo(node.coordinates, 6.5, {
+                animate: true,
+                duration: 1.2
+            });
+        }
+
+        // 6. Bind real-time tracking input event actions directly to the range node elements
+        slider.addEventListener('input', (e) => {
+            shiftUniverseContextState(parseInt(e.target.value));
+        });
+
+        // Initialize and bootstrap deploy system on immediate module instantiation load run
+        shiftUniverseContextState(0);
+    </script>
+    <!-- Fixed Dashboard Footer Interface -->
+<footer style="position: relative; bottom: 1rem; left: 1rem; z-index: 1001; background-color: rgba(15, 23, 42, 0.9); border: 1px solid #334155; padding: 0.75rem 1rem; border-radius: 0.75rem; display: flex; align-items: center; gap: 1.5rem; font-family: monospace;">
+    
+    <!-- Branding Block -->
+    <div style="color: white; font-size: 0.875rem; white-space: nowrap;">
+        Created By <span style="color: #ffffff; font-weight: bold;">Khaled Nasir</span>
+    </div>
+
+    <!-- Vertical Divider Line -->
+    <div style="width: 1px; height: 1rem; background-color: #334155;"></div>
+
+    <!-- HTML Horizontal List Element -->
+    <ul style="list-style-type: none; margin: 0; padding: 0; display: flex; flex-direction: row; gap: 1rem; font-size: 0.875rem;">
+        <li>
+            <a href="https://x.com/KhaledNasir2" target="_blank" rel="noopener noreferrer" style="color: #38bdf8; text-decoration: none;">X</a>
+        </li>
+        <li>
+            <a href="https://bd.linkedin.com/in/khaled-nasir-8709ab33" target="_blank" rel="noopener noreferrer" style="color: #38bdf8; text-decoration: none;">LinkedIn</a>
+        </li>
+        <li>
+            <a href="https://medium.com/@khalednasir" target="_blank" rel="noopener noreferrer" style="color: #38bdf8; text-decoration: none;">Medium</a>
+        </li>
+        <li>
+            <a href="https://www.instagram.com/khalednasir/" target="_blank" rel="noopener noreferrer" style="color: #38bdf8; text-decoration: none;">Instagram</a>
+        </li>
+    </ul>
+
+</footer>
+
+</body>
+</html>

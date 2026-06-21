@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>South Asian Detective Fiction Hub</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        /* Base scrollbar handling to match previous UI pages */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col justify-between">
+
+    <div>
+        <nav class="bg-slate-900 border-b border-slate-800 sticky top-0 z-50 backdrop-blur-md bg-opacity-95">
+            <div class="max-w-6xl mx-auto px-4 py-3 flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+                    <span class="font-mono font-black tracking-wider text-xs uppercase text-slate-400">Goyenda Nexus</span>
+                </div>
+                <ul class="flex flex-wrap items-center justify-center gap-2 md:gap-4 font-mono text-xs">
+                    <li><a href="Book Catalogue.html" class="text-slate-400 hover:text-white hover:bg-slate-800/60 px-3 py-1.5 rounded-md transition-all">Book Catalogue</a></li>
+                    <li><a href="Original_Covers_Series.html" class="text-slate-400 hover:text-white hover:bg-slate-800/60 px-3 py-1.5 rounded-md transition-all">Original Series</a></li>
+                    <li><a href="Intel_Timeline.html" class="text-slate-400 hover:text-white hover:bg-slate-800/60 px-3 py-1.5 rounded-md transition-all">Intel Timeline</a></li>
+                    <li><a href="Global_Missions.html" class="text-slate-400 hover:text-white hover:bg-slate-800/60 px-3 py-1.5 rounded-md transition-all">Global Missions</a></li>
+                    <li><a href="Evidence Desk.html" class="text-slate-400 hover:text-white hover:bg-slate-800/60 px-3 py-1.5 rounded-md transition-all">Evidence Desk</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <main class="max-w-4xl mx-auto px-4 py-8 md:py-12 space-y-10">
+            
+            <div class="text-center md:text-left space-y-2 border-b border-slate-900 pb-6">
+                <h1 class="text-3xl md:text-5xl font-black tracking-tight text-white leading-none bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
+                    South Asian Detective Fiction Hub
+                </h1>
+                <p class="text-xs font-mono tracking-widest text-slate-500 uppercase">Operational Intel Base & Archive System</p>
+            </div>
+
+            <section class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div class="bg-purple-950/40 border border-purple-900/40 rounded-xl p-4 flex flex-col justify-between shadow-lg relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-purple-500/5 rounded-full blur-2xl group-hover:bg-purple-500/10 transition-all"></div>
+                    <span class="text-[10px] font-mono uppercase tracking-widest text-purple-400 font-bold mb-1">PKT // Pakistan</span>
+                    <div id="clock-pkt" class="text-2xl font-black font-mono tracking-wider text-purple-100">00:00:00</div>
+                </div>
+
+                <div class="bg-amber-950/40 border border-amber-900/40 rounded-xl p-4 flex flex-col justify-between shadow-lg relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-amber-500/5 rounded-full blur-2xl group-hover:bg-amber-500/10 transition-all"></div>
+                    <span class="text-[10px] font-mono uppercase tracking-widest text-amber-400 font-bold mb-1">IST // India</span>
+                    <div id="clock-ist" class="text-2xl font-black font-mono tracking-wider text-amber-100">00:00:00</div>
+                </div>
+
+                <div class="bg-emerald-950/40 border border-emerald-900/40 rounded-xl p-4 flex flex-col justify-between shadow-lg relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-emerald-500/5 rounded-full blur-2xl group-hover:bg-emerald-500/10 transition-all"></div>
+                    <span class="text-[10px] font-mono uppercase tracking-widest text-emerald-400 font-bold mb-1">BST // Bangladesh</span>
+                    <div id="clock-bst" class="text-2xl font-black font-mono tracking-wider text-emerald-100">00:00:00</div>
+                </div>
+            </section>
+
+            <section class="bg-slate-900/40 border border-slate-900 p-6 rounded-2xl relative shadow-xl">
+                <div class="absolute top-4 left-4 w-1.5 h-1.5 rounded-full bg-slate-700"></div>
+                <p class="text-slate-300 text-sm md:text-base leading-relaxed pl-4 font-sans">
+                In my formative years, detective novels had a profound impact in my life. The detectives, although fictional characters only existed in the fictional universe, entertained thousands of teen agers across the globe. The British Empire had the most recognizable – Sherlock Holmes with Doctor John Watson. The Francophonic world had Inspector Jules Maigret. As a South Asian, I grew up reading the works of many extraordinary gifted authors, given us a number of larger than life characters. Thanks to these talented authors, South Asia had been a home for generations of sleuths. The love for these sleuths was the driving force behind this project. This is the only project to the best of my knowledge that highlights the origin, timeline, the protagonists, investigative techniques and missions that were undertaken by the indomitable detectives of South Asia. The project is made with book illustrations, maps and open data to find places described in fictions, approaches towards investigations and creating a virtual community of lovers of sleuth fictions. Share the page address of evidence desk page. You will witness fan interactions with different objects in real-time.
+                </p>
+            </section>
+
+            <section class="space-y-4">
+                <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                    <h3 class="text-xs font-mono font-bold uppercase tracking-wider text-slate-400">Reference Bibliography</h3>
+                </div>
+                
+                <ul class="space-y-3 list-none p-0 m-0 text-xs md:text-sm text-slate-400">
+                    <li class="bg-slate-900/20 border border-slate-900/60 p-3 rounded-xl hover:border-slate-800 transition-colors">
+                        Mukherjee, C. (2021). Indigenising the Detective Genre in Satyajit Ray's 'Feluda' series: A Study. <span class="italic text-slate-300">Drishti – The Sight</span>.
+                    </li>
+                    <li class="bg-slate-900/20 border border-slate-900/60 p-3 rounded-xl hover:border-slate-800 transition-colors">
+                        Nisar, M. A., & Masood, A. (2013). The Nostalgic Detective: Identity Formation in Detective Fiction of Pakistan. <span class="italic text-slate-300">Postcolonial Text</span>.
+                    </li>
+                    <li class="bg-slate-900/20 border border-slate-900/60 p-3 rounded-xl hover:border-slate-800 transition-colors">
+                        Satyajit, R. (2021). Satyajit Ray's The Adventures of Feluda. <span class="italic text-slate-300">Lucknow University Departmental Content</span>
+                    </li>
+                    
+                </ul>
+
+                <div class="pt-4 border-t border-slate-900/60 flex flex-col sm:flex-row items-center gap-3 justify-between">
+                    <div>
+                        <h4 class="text-[11px] font-mono uppercase font-bold tracking-wider text-slate-400">Intel Dispatch Relay</h4>
+                        <p class="text-[11px] font-mono text-slate-500">Distribute hub data metrics via encrypted network nodes.</p>
+                    </div>
+                    <div class="relative flex-shrink-0">
+                        <button id="share-node-btn" class="bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-800 hover:border-slate-700 font-mono text-xs px-3.5 py-2 rounded-lg flex items-center gap-2 shadow-xl transition-all active:scale-95 group cursor-pointer">
+                            <svg class="w-3.5 h-3.5 text-sky-400 group-hover:rotate-12 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M7.217 10.907a2.25 2.25 0 1 0 0 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186 9.566-5.314m-9.566 7.5 9.566 5.314m0 0a2.25 2.25 0 1 0 3.935 2.186 2.25 2.25 0 0 0-3.935-2.186Zm0-12.814a2.25 2.25 0 1 0 3.933-2.185 2.25 2.25 0 0 0-3.933 2.185Z"/>
+                            </svg>
+                            Share Hub Data
+                        </button>
+                        <span id="share-toast" class="absolute left-1/2 -translate-x-1/2 -top-10 bg-emerald-950 text-emerald-400 border border-emerald-800/60 font-mono text-[10px] px-2.5 py-1 rounded shadow-xl opacity-0 transition-opacity pointer-events-none whitespace-nowrap">Link Copied to Clipboard</span>
+                    </div>
+                </div>
+            </section> </main>
+    </div>
+
+    <div class="max-w-4xl mx-auto w-full px-4 pb-6 pt-6">
+        <footer style="position: relative; bottom: 0; left: 0; z-index: 1001; background-color: rgba(15, 23, 42, 0.9); border: 1px solid #334155; padding: 0.75rem 1rem; border-radius: 0.75rem; display: flex; align-items: center; gap: 1.5rem; font-family: monospace;">
+            
+            <div style="color: white; font-size: 0.875rem; white-space: nowrap;">
+                Created By <span style="color: #ffffff; font-weight: bold;">Khaled Nasir</span>
+            </div>
+         
+            <div style="width: 1px; height: 1rem; background-color: #334155;"></div>
+         
+            <ul style="list-style-type: none; margin: 0; padding: 0; display: flex; flex-direction: row; gap: 1rem; font-size: 0.875rem;">
+                <li>
+                    <a href="https://x.com/KhaledNasir2" target="_blank" rel="noopener noreferrer" style="color: #38bdf8; text-decoration: none;">X</a>
+                </li>
+                <li>
+                    <a href="https://bd.linkedin.com/in/khaled-nasir-8709ab33" target="_blank" rel="noopener noreferrer" style="color: #38bdf8; text-decoration: none;">LinkedIn</a>
+                </li>
+                <li>
+                    <a href="https://medium.com/@khalednasir" target="_blank" rel="noopener noreferrer" style="color: #38bdf8; text-decoration: none;">Medium</a>
+                </li>
+                <li>
+                    <a href="https://www.instagram.com/khalednasir/" target="_blank" rel="noopener noreferrer" style="color: #38bdf8; text-decoration: none;">Instagram</a>
+                </li>
+            </ul>
+        </footer>
+    </div>
+
+    <script>
+        // 1. Digital Time Systems Execution
+        function updateRegionalClocks() {
+            const currentUTC = new Date();
+            const clocks = [
+                { id: 'clock-pkt', offset: 5.0 }, 
+                { id: 'clock-ist', offset: 5.5 }, 
+                { id: 'clock-bst', offset: 6.0 }  
+            ];
+
+            clocks.forEach(zone => {
+                const utcMillis = currentUTC.getTime() + (currentUTC.getTimezoneOffset() * 60000);
+                const localTargetTime = new Date(utcMillis + (3600000 * zone.offset));
+
+                let hrs = localTargetTime.getHours();
+                let mins = localTargetTime.getMinutes();
+                let secs = localTargetTime.getSeconds();
+
+                hrs = hrs < 10 ? '0' + hrs : hrs;
+                mins = mins < 10 ? '0' + mins : mins;
+                secs = secs < 10 ? '0' + secs : secs;
+
+                document.getElementById(zone.id).textContent = `${hrs}:${mins}:${secs}`;
+            });
+        }
+        setInterval(updateRegionalClocks, 1000);
+        updateRegionalClocks();
+
+        // 2. Web Share API Handler Logic Pipeline
+        document.getElementById('share-node-btn').addEventListener('click', async () => {
+            const shareData = {
+                title: 'South Asian Detective Fiction Hub',
+                text: 'Highlights the origin, timeline, and dynamic spatial coordinates tracking fictional detective networks across South Asia.',
+                url: window.location.href
+            };
+
+            if (navigator.share) {
+                try {
+                    await navigator.share(shareData);
+                } catch (err) {
+                    console.log('Share execution canceled or failed:', err);
+                }
+            } else {
+                // Fallback action strategy for standard desktop browsers without native Web Share modules
+                try {
+                    await navigator.clipboard.writeText(window.location.href);
+                    const toast = document.getElementById('share-toast');
+                    toast.classList.remove('opacity-0');
+                    toast.classList.add('opacity-100');
+                    
+                    setTimeout(() => {
+                        toast.classList.remove('opacity-100');
+                        toast.classList.add('opacity-0');
+                    }, 2500);
+                } catch (clipboardErr) {
+                    alert("Copy failed. Direct URL destination: " + window.location.href);
+                }
+            }
+        });
+    </script>
+</body>
+</html> 

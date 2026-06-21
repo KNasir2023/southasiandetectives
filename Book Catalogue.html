@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subcontinent Detective Dossier Matrix</title>
+    
+    <!-- Tailwind CSS Engine -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <style>
+        .cyber-panel {
+            background: rgba(20, 20, 20, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(63, 63, 70, 0.3);
+        }
+        
+        /* Smooth fade transition for content swapping */
+        .fade-transition {
+            transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-neutral-950 text-neutral-100 min-h-screen flex flex-col justify-between font-sans selection:bg-amber-500/30">
+
+    <!-- Header Frame -->
+    <header class="w-full bg-neutral-900/60 border-b border-neutral-800/80 px-6 py-4 flex justify-between items-center z-10 backdrop-blur-md">
+        <div>
+            <span class="text-[10px] font-mono tracking-widest bg-amber-950 text-amber-400 border border-amber-900 px-2 py-0.5 rounded uppercase font-bold">
+                Archive Database
+            </span>
+            <h1 class="text-base font-black font-mono tracking-tight text-neutral-200 mt-1 uppercase">DETECTIVE NEXUS MASTER CATALOG</h1>
+        </div>
+        <div id="timeDisplay" class="font-mono text-xs text-neutral-400 bg-neutral-900 px-3 py-1 rounded-lg border border-neutral-800">
+            SYSTEM TIME: --:--:--
+        </div>
+    </header>
+
+    <!-- Main Workspace Container -->
+    <main class="flex-1 flex items-center justify-center p-4 sm:p-6 max-w-4xl w-full mx-auto">
+        
+        <!-- FIVE-CHARACTER VISUAL DOSSIER MATRIX CARD -->
+        <div class="cyber-panel p-6 sm:p-8 rounded-3xl border border-neutral-800 bg-neutral-900/40 backdrop-blur-md w-full space-y-6 shadow-2xl">
+            
+            <!-- Component Header -->
+            <div class="flex justify-between items-center border-b border-neutral-800 pb-4">
+                <div>
+                    <span class="text-[10px] font-mono tracking-widest text-neutral-400 uppercase">
+                        Required Reading Intel
+                    </span>
+                    <h2 class="text-lg font-bold font-mono tracking-tight text-amber-400 mt-0.5 uppercase">
+                        Character Archives
+                    </h2>
+                </div>
+                <span class="text-xs font-mono bg-neutral-900 border border-neutral-800 text-neutral-400 px-2.5 py-1 rounded-md" id="catalogIndex">
+                    DOSSIER 1/5
+                </span>
+            </div>
+
+            <!-- Active Character Navigation Tabs -->
+            <div class="grid grid-cols-2 sm:grid-cols-5 gap-1.5 p-1 bg-black/40 rounded-xl border border-neutral-800/60 font-mono text-[10px] sm:text-[11px]">
+                <button onclick="slideCatalog('byomkesh', 1)" id="tab-byomkesh" class="text-center py-2 rounded-lg transition-all text-neutral-500 hover:text-neutral-300 font-bold uppercase cursor-pointer">
+                    Byomkesh
+                </button>
+                <button onclick="slideCatalog('imran', 2)" id="tab-imran" class="text-center py-2 rounded-lg transition-all text-neutral-500 hover:text-neutral-300 font-bold uppercase cursor-pointer">
+                    Ali Imran
+                </button>
+                <button onclick="slideCatalog('feluda', 3)" id="tab-feluda" class="text-center py-2 rounded-lg transition-all text-neutral-500 hover:text-neutral-300 font-bold uppercase cursor-pointer">
+                    Feluda
+                </button>
+                <button onclick="slideCatalog('rana', 4)" id="tab-rana" class="text-center py-2 rounded-lg transition-all text-neutral-500 hover:text-neutral-300 font-bold uppercase cursor-pointer">
+                    Masud Rana
+                </button>
+                <button onclick="slideCatalog('goyenda', 5)" id="tab-goyenda" class="text-center py-2 rounded-lg transition-all text-neutral-500 hover:text-neutral-300 font-bold uppercase cursor-pointer col-span-2 sm:col-span-1">
+                    Teen Goyenda
+                </button>
+            </div>
+
+            <!-- Consistent Two-Column Layout Grid -->
+            <div id="dossierContent" class="fade-transition bg-neutral-950/60 p-6 rounded-2xl border border-neutral-800 grid grid-cols-1 md:grid-cols-3 gap-6 items-center min-h-[240px]">
+                
+                <!-- Left Columns: Text Fields Container -->
+                <div class="md:col-span-2 space-y-3 text-left font-mono">
+                    <div class="text-[10px] text-amber-500 font-bold uppercase tracking-wider" id="bookGenre">
+                        GENRE: --
+                    </div>
+                    <h4 class="text-neutral-100 font-bold text-xl font-sans tracking-tight" id="bookTitle">
+                        Loading Record...
+                    </h4>
+                    <!-- Fixed height reservation ensures long summaries don't bounce the layout -->
+                    <p class="text-xs sm:text-sm text-neutral-400 font-sans leading-relaxed min-h-[110px]" id="bookSummary">
+                        Initializing cryptographic archive paths...
+                    </p>
+                    <div class="text-[10px] text-neutral-500 pt-3 flex flex-wrap gap-x-6 gap-y-1 border-t border-neutral-900" id="bookMeta">
+                        <span>Author: --</span>
+                        <span>Debut: --</span>
+                    </div>
+                </div>
+
+                <!-- Right Column: Rigid Aspect-Ratio Locked Image Frame -->
+                <div class="md:col-span-1 flex justify-center items-center">
+                    <div class="w-32 h-44 bg-neutral-900 border border-neutral-800 rounded-xl overflow-hidden shadow-2xl flex items-center justify-center relative group shrink-0">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none z-10"></div>
+                        <img id="bookCoverImg" src="" alt="Book Cover" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer Note -->
+    <footer class="w-full border-t border-neutral-900/80 px-6 py-4 text-center text-[10px] font-mono text-neutral-600 tracking-wider">
+        SUBCONTINENT DETECTIVE ARCHIVE LORE • INDEPENDENT MATRIX DISPLAY 
+    </footer>
+
+    <!-- Core Interactive Logic Script -->
+    <script>
+        // MASTER RECORD REGISTRY
+        const catalogRegistry = {
+            byomkesh: {
+                genre: "Traditional Truth-Seeking (Satyanweshi)",
+                title: "Satyanweshi (The Seeker of Truth)",
+                desc: "The quintessential introduction to Byomkesh Bakshi set in 1930s Kolkata. Byomkesh untangles a complex local contraband operation under a false identity, relying purely on deep human observation, forensic tracking, and chemical logic.",
+                author: "Sharadindu Bandyopadhyay",
+                year: "1932",
+                coverUrl: "https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcQK9ZPa_Jikn6dPFlX4lMw_IxPAld53p35HC9VRkMI7-ZDfyxn7nDhczTKoJpApA7x2uwpuClydBUpTQLs"
+            },
+            imran: {
+                genre: "Humorous Deceptive Counter-Espionage",
+                title: "Khaufnak Imarat (The Terrifying Building)",
+                desc: "The foundational thriller introducing Ali Imran, the deceptive genius who poses as a cheerful simpleton while leading the Secret Service as code officer X-2. Imran navigates an impenetrable, trap-laden corporate compound using sheer wit and calculated unpredictability.",
+                author: "Ibn-e-Safi",
+                year: "1955",
+                coverUrl: "https://m.media-amazon.com/images/I/51Od-5gCfkL._SL500_.jpg"
+            },
+            feluda: {
+                genre: "Analytical Academic Observation",
+                title: "Sonar Kella (The Golden Fortress)",
+                desc: "Prodosh Chandra Mitter (Feluda) tracks a young boy's memories of a past-life fortress deep into Jaisalmer. It stands as a brilliant masterclass in geographic deduction, unmasking deceptive gemstone fraudsters, and setting sharp psychological traps.",
+                author: "Satyajit Ray",
+                year: "1971",
+                coverUrl: "https://upload.wikimedia.org/wikipedia/en/5/56/Sonar_Kella_book_front_cover.jpg"
+            },
+            rana: {
+                genre: "High-Octane Global Counter-Espionage",
+                title: "Dhongsho Pahar (The Destructive Mountain)",
+                desc: "The high-stakes debut of BCI Secret Agent Masud Rana (MR-9). Rana must intercept a ruthless corporate saboteur bent on obliterating the strategic Kaptai Dam infrastructure project, mixing scuba operations with tactical industrial defenses.",
+                author: "Qazi Anwar Hussain",
+                year: "1966",
+                coverUrl: "https://static.wikia.nocookie.net/masud-rana/images/0/0a/%E0%A6%A7%E0%A7%8D%E0%A6%AC%E0%A6%82%E0%A6%B8-%E0%A6%AA%E0%A6%BE%E0%A6%B9%E0%A6%BE%E0%A6%A1%E0%A6%BC_first_edition.jpg"
+            },
+            goyenda: {
+                genre: "Youth Team Tactical Investigation",
+                title: "Teen Goyenda (Volume 1)",
+                desc: "The legendary opening omnibus introducing Kishore Pasha, Musa Aman, and Robin Milford. Managing operations right out of a hidden green mobile home buried inside a Rocky Beach salvage yard, the iconic trio uses rigorous teamwork and tech logic to conquer foundational local mysteries.",
+                author: "Rakib Hasan",
+                year: "1985",
+                coverUrl: "https://alalodulal.org/wp-content/uploads/2025/10/teen-goyenda-volume-01.jpg"
+            }
+        };
+
+        // UI Slider State Function
+        function slideCatalog(key, indexNum) {
+            const item = catalogRegistry[key];
+            if (!item) return;
+
+            const displayCard = document.getElementById('dossierContent');
+            
+            // Brief visual fade out to prevent jarring text pops
+            displayCard.style.opacity = 0;
+            displayCard.style.transform = "translateY(2px)";
+
+            setTimeout(() => {
+                // Update text fields
+                document.getElementById('bookGenre').innerText = `GENRE: ${item.genre}`;
+                document.getElementById('bookTitle').innerText = item.title;
+                document.getElementById('bookSummary').innerText = item.desc;
+                document.getElementById('bookMeta').innerHTML = `<span>📖 Author: <strong>${item.author}</strong></span> <span>📅 Year: <strong>${item.year}</strong></span>`;
+                document.getElementById('catalogIndex').innerText = `DOSSIER ${indexNum}/5`;
+                
+                // Update Cover Art Image Securely
+                const imgNode = document.getElementById('bookCoverImg');
+                imgNode.src = item.coverUrl;
+                imgNode.alt = `${item.title} Official Cover Art`;
+
+                // Reset Tab Styles across all navigational nodes
+                Object.keys(catalogRegistry).forEach(k => {
+                    const tab = document.getElementById(`tab-${k}`);
+                    if (tab) {
+                        tab.className = "text-center py-2 rounded-lg transition-all text-neutral-500 hover:text-neutral-300 font-mono text-[11px] cursor-pointer";
+                    }
+                });
+
+                // Highlight Selected Active Tab Accent Panel
+                const activeTab = document.getElementById(`tab-${key}`);
+                if (activeTab) {
+                    activeTab.className = "text-center py-2 rounded-lg transition-all bg-amber-500/10 text-amber-400 border border-amber-500/20 font-bold font-mono text-[11px] cursor-pointer";
+                }
+
+                // Fade back in smoothly
+                displayCard.style.opacity = 1;
+                displayCard.style.transform = "translateY(0)";
+            }, 150);
+        }
+
+        // Real-Time System Clock Update
+        setInterval(() => {
+            const timeBox = document.getElementById('timeDisplay');
+            if (timeBox) {
+                const now = new Date();
+                timeBox.innerText = `SYSTEM TIME: ${now.toTimeString().split(' ')[0]}`;
+            }
+        }, 1000);
+
+        // Preload Default View on document render
+        window.addEventListener('DOMContentLoaded', () => {
+            slideCatalog('byomkesh', 1);
+        });
+    </script>
+    
+  <!-- Fixed Dashboard Footer Interface -->
+<!-- Fixed Dashboard Footer Interface -->
+<footer style="position: relative; bottom: 1rem; left: 1rem; z-index: 1001; background-color: rgba(15, 23, 42, 0.9); border: 1px solid #334155; padding: 0.75rem 1rem; border-radius: 0.75rem; display: flex; align-items: center; gap: 1.5rem; font-family: monospace;">
+    
+    <!-- Branding Block -->
+    <div style="color: white; font-size: 0.875rem; white-space: nowrap;">
+        Created By <span style="color: #ffffff; font-weight: bold;">Khaled Nasir</span>
+    </div>
+
+    <!-- Vertical Divider Line -->
+    <div style="width: 1px; height: 1rem; background-color: #334155;"></div>
+
+    <!-- HTML Horizontal List Element -->
+    <ul style="list-style-type: none; margin: 0; padding: 0; display: flex; flex-direction: row; gap: 1rem; font-size: 0.875rem;">
+        <li>
+            <a href="https://x.com/KhaledNasir2" target="_blank" rel="noopener noreferrer" style="color: #38bdf8; text-decoration: none;">X</a>
+        </li>
+        <li>
+            <a href="https://bd.linkedin.com/in/khaled-nasir-8709ab33" target="_blank" rel="noopener noreferrer" style="color: #38bdf8; text-decoration: none;">LinkedIn</a>
+        </li>
+        <li>
+            <a href="https://medium.com/@khalednasir" target="_blank" rel="noopener noreferrer" style="color: #38bdf8; text-decoration: none;">Medium</a>
+        </li>
+        <li>
+            <a href="https://www.instagram.com/khalednasir/" target="_blank" rel="noopener noreferrer" style="color: #38bdf8; text-decoration: none;">Instagram</a>
+        </li>
+    </ul>
+
+</footer>
+
+</body>
+</html>
+
+

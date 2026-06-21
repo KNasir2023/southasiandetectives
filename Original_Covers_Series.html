@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goyenda Nexus | Intelligence Dashboard</title>
+    
+    <!-- CDNs -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <style>
+        #map { height: 100vh; width: 100%; z-index: 1; }
+        /* Smooth transition for the side panel */
+        #side-panel { transition: transform 0.3s ease-in-out; z-index: 1000; }
+        .panel-hidden { transform: translateX(100%); }
+        .panel-visible { transform: translateX(0); }
+    </style>
+</head>
+<body class="bg-slate-900 overflow-hidden">
+   <!-- Header Overlay -->
+    <div class="absolute top-4 left-4 z-[1001] bg-white/90 backdrop-blur p-4 rounded-lg shadow-xl border border-slate-200 hidden md:block">
+        <h1 class="text-2xl font-black text-slate-900 tracking-tight">GOYENDA NEXUS</h1>
+        <p class="text-xs text-slate-500 font-mono">SOUTH ASIAN INTEL MAPPING v1.0</p>
+    </div>
+
+    <!-- Fixed Dashboard Footer Interface -->
+<footer style="position: relative; bottom: 1rem; left: 1rem; z-index: 1001; background-color: rgba(15, 23, 42, 0.9); border: 1px solid #334155; padding: 0.75rem 1rem; border-radius: 0.75rem; display: flex; align-items: center; gap: 1.5rem; font-family: monospace;">
+    
+    <!-- Branding Block -->
+    <div style="color: white; font-size: 0.875rem; white-space: nowrap;">
+        Created By <span style="color: #ffffff; font-weight: bold;">Khaled Nasir</span>
+    </div>
+
+    <!-- Vertical Divider Line -->
+    <div style="width: 1px; height: 1rem; background-color: #334155;"></div>
+
+    <!-- HTML Horizontal List Element -->
+    <ul style="list-style-type: none; margin: 0; padding: 0; display: flex; flex-direction: row; gap: 1rem; font-size: 0.875rem;">
+        <li>
+            <a href="https://x.com/KhaledNasir2" target="_blank" rel="noopener noreferrer" style="color: #38bdf8; text-decoration: none;">X</a>
+        </li>
+        <li>
+            <a href="https://bd.linkedin.com/in/khaled-nasir-8709ab33" target="_blank" rel="noopener noreferrer" style="color: #38bdf8; text-decoration: none;">LinkedIn</a>
+        </li>
+        <li>
+            <a href="https://medium.com/@khalednasir" target="_blank" rel="noopener noreferrer" style="color: #38bdf8; text-decoration: none;">Medium</a>
+        </li>
+        <li>
+            <a href="https://www.instagram.com/khalednasir/" target="_blank" rel="noopener noreferrer" style="color: #38bdf8; text-decoration: none;">Instagram</a>
+        </li>
+    </ul>
+
+</footer>
+
+
+    <!-- Map Container -->
+    <div id="map"></div>
+
+    <!-- Sliding Intelligence Side Panel -->
+    <div id="side-panel" class="fixed top-0 right-0 h-full w-full md:w-96 bg-white shadow-2xl panel-hidden flex flex-col border-l border-slate-200">
+        <!-- Close Button -->
+        <button onclick="closePanel()" class="absolute top-4 left-4 bg-slate-100 p-2 rounded-full hover:bg-slate-200 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+        </button>
+
+        <div id="panel-content" class="overflow-y-auto h-full p-6 pt-16">
+            <!-- Dynamic Content Injected Here -->
+        </div>
+    </div>
+    
+    <script>
+        // 1. Database with Real Image Assets
+        const detectiveDatabase = [
+            {
+                id: "fel-001",
+                series: "Feluda",
+                title: "Sonar Kella",
+                author: "Satyajit Ray",
+                // Handled raw media URL mapping for production stability
+                img: "https://upload.wikimedia.org/wikipedia/en/5/56/Sonar_Kella_book_front_cover.jpg",
+                coords: [26.9157, 70.9160],
+                location: "Jaisalmer, India",
+                metrics: { logic: 95, action: 40, tech: 20, culture: 100 },
+                tags: ["Logic", "Historical Research"]
+            },
+            {
+                id: "tg-001",
+                series: "Tin Goyenda",
+                title: "Volume 1",
+                author: "Rakib Hasan",
+                img: "https://static.wikia.nocookie.net/tingoyenda/images/1/11/Tin_Goyenda_Cover.jpg",
+                coords: [34.0195, -118.4912],
+                location: "Rocky Beach, CA",
+                metrics: { logic: 100, action: 75, tech: 85, culture: 40 },
+                tags: ["Surveillance", "Signals Intelligence"]
+            },
+            {
+                id: "mr-001",
+                series: "Masud Rana",
+                title: "Rana Sabdhan!",
+                author: "Qazi Anwar Hussain",
+                img: "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1704086768i/18740771.jpg",
+                coords: [23.8103, 90.4125],
+                location: "Dhaka, Bangladesh",
+                metrics: { logic: 65, action: 100, tech: 90, culture: 55 },
+                tags: ["Espionage", "Counter-Terrorism"]
+            }
+        ];
+
+        // 2. Initialize Map
+        const map = L.map('map', { zoomControl: false }).setView([20, 40], 3);
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png').addTo(map);
+
+        // 3. Populate Map
+        detectiveDatabase.forEach(book => {
+            const marker = L.marker(book.coords).addTo(map);
+            marker.on('click', () => openPanel(book));
+        });
+
+        // 4. Panel Logic
+        function openPanel(book) {
+            const panel = document.getElementById('side-panel');
+            const content = document.getElementById('panel-content');
+
+            content.innerHTML = `
+                <img src="${book.img}" class="w-full h-64 object-contain bg-slate-100 rounded-xl mb-6 shadow-md border" alt="Book Cover" onerror="this.onerror=null; this.src='https://placehold.co/300x400/e2e8f0/1e293b?text=Image+Unavailable';">
+                
+                <div class="mb-6">
+                    <span class="text-xs font-bold uppercase tracking-widest text-blue-600">${book.series}</span>
+                    <h2 class="text-3xl font-black text-slate-900 leading-tight">${book.title}</h2>
+                    <p class="text-slate-500 font-medium">by ${book.author}</p>
+                </div>
+
+                <div class="space-y-4 mb-8">
+                    <div class="flex items-center gap-2 text-sm text-slate-600">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        ${book.location}
+                    </div>
+                </div>
+
+                <div class="border-t pt-6">
+                    <h4 class="text-sm font-bold text-slate-900 uppercase mb-4 tracking-tighter">Intelligence Metrics</h4>
+                    ${Object.entries(book.metrics).map(([key, val]) => `
+                        <div class="mb-4">
+                            <div class="flex justify-between text-xs mb-1 uppercase font-bold">
+                                <span>${key}</span>
+                                <span>${val}%</span>
+                            </div>
+                            <div class="w-full bg-slate-100 h-1.5 rounded-full">
+                                <div class="bg-blue-600 h-1.5 rounded-full" style="width: ${val}%"></div>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+
+                <div class="mt-8 flex flex-wrap gap-2">
+                    ${book.tags.map(tag => `<span class="bg-slate-900 text-white text-[10px] px-3 py-1 rounded-full font-bold uppercase">${tag}</span>`).join('')}
+                </div>
+            `;
+
+            panel.classList.remove('panel-hidden');
+            panel.classList.add('panel-visible');
+        }
+
+        function closePanel() {
+            const panel = document.getElementById('side-panel');
+            panel.classList.remove('panel-visible');
+            panel.classList.add('panel-hidden');
+        }
+    </script>
+
+
+</body>
+</html>
